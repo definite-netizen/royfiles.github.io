@@ -25,6 +25,19 @@
             color: #9a9a9a;
             font-size: 0.9em;
         }
+
+        /* Flicker animation */
+        @keyframes flicker {
+            0% { opacity: 1; }
+            48% { opacity: 1; }
+            49% { opacity: 0.35; }
+            50% { opacity: 1; }
+            100% { opacity: 1; }
+        }
+
+        .flicker {
+            animation: flicker 7s infinite;
+        }
     </style>
 </head>
 <body>
@@ -34,8 +47,14 @@
 <p>CASE ID: 050324</p>
 <p>STATUS: PARTIALLY DECLASSIFIED</p>
 <p>REDACTIONS: ███████████</p>
-<p class="subtle">Last Updated: May 3, 2024 – 14:07</p>
-<p class="subtle">ACCESS LOGGED.</p>
+
+<p class="subtle flicker" id="timestamp">
+    Last Updated: May 3, 2024 – 14:07
+</p>
+
+<p class="subtle access" id="access">
+    ACCESS LOGGED.
+</p>
 
 <hr>
 
@@ -53,6 +72,30 @@
         </a>
     </li>
 </ul>
+
+<script>
+/* Rare letter spacing distortion */
+setInterval(() => {
+    const access = document.getElementById("access");
+    if (Math.random() < 0.18) {
+        access.style.letterSpacing = "3px";
+        setTimeout(() => {
+            access.style.letterSpacing = "normal";
+        }, 120);
+    }
+}, 4000);
+
+/* Very rare timestamp mutation */
+setInterval(() => {
+    const ts = document.getElementById("timestamp");
+    if (Math.random() < 0.12) {
+        ts.textContent = "Last Updated: May 3, 2024 – 14:07:03";
+        setTimeout(() => {
+            ts.textContent = "Last Updated: May 3, 2024 – 14:07";
+        }, 180);
+    }
+}, 5000);
+</script>
 
 </body>
 </html>
