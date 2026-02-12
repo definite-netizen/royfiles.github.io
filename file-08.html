@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>FILE 08 – CONTAINMENT DIRECTIVE</title>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono&display=swap" rel="stylesheet">
+  <style>
+    body { background:#0b0b0b; color:#e0e0e0; font-family:"IBM Plex Mono", monospace; padding:40px; }
+    h1 { color:red; letter-spacing:2px; }
+    .meta { color:#9a9a9a; font-size:0.9em; }
+    .divider { margin:30px 0; border-top:1px solid #333; }
+  </style>
+</head>
+<body>
+
+<h1>FILE 08 – CONTAINMENT DIRECTIVE</h1>
+<p class="meta">CASE ID: 050324-H</p>
+<p class="meta">STATUS: AUTOMATED RESPONSE</p>
+
+<div class="divider"></div>
+
+<p>Containment escalation initiated.</p>
+<p>Archive access suspended.</p>
+<p class="meta">Duration: 01:00:00</p>
+
+<script>
+  // Lock the archive for 1 hour (client-side)
+  const until = Date.now() + (60 * 60 * 1000);
+  localStorage.setItem("siteDownUntil", String(until));
+</script>
+
+</body>
+</html>
