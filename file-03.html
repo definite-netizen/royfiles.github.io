@@ -123,6 +123,16 @@ NOTES:
 <br>• Playback length: 11 minutes.
 <br>• File size: 0 KB.
 </p>
+<script>
+setTimeout(() => {
+    const answers = document.querySelectorAll("p");
+    answers.forEach(p => {
+        if (p.textContent.includes("Nothing unusual occurred.")) {
+            p.textContent = "A: It already occurred.";
+        }
+    });
+}, 30000);
+</script>
 
 </body>
 </html>
