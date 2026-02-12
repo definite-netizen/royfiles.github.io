@@ -56,6 +56,49 @@
 </p>
 
 <script>
+    const downUntil = parseInt(localStorage.getItem("siteDownUntil") || "0", 10);
+
+if (Date.now() < downUntil) {
+
+    document.body.innerHTML = `
+        <div style="display:flex;align-items:center;justify-content:center;height:100vh;text-align:center;">
+            <div>
+                <div style="color:#ff4444;letter-spacing:2px;margin-bottom:12px;">
+                    ARCHIVE UNAVAILABLE
+                </div>
+                <div style="color:#9a9a9a;margin-bottom:8px;">
+                    Containment directive active.
+                </div>
+                <div id="countdown" style="color:#e0e0e0;"></div>
+            </div>
+        </div>
+    `;
+
+    const countdownEl = document.getElementById("countdown");
+
+    function updateCountdown() {
+        const remaining = downUntil - Date.now();
+        if (remaining <= 0) {
+            localStorage.removeItem("siteDownUntil");
+            location.reload();
+            return;
+        }
+
+        const minutes = Math.floor(remaining / 60000);
+        const seconds = Math.floor((remaining % 60000) / 1000);
+
+        countdownEl.textContent =
+            "Resuming in " +
+            String(minutes).padStart(2, "0") + ":" +
+            String(seconds).padStart(2, "0");
+    }
+
+    updateCountdown();
+    setInterval(updateCountdown, 1000);
+
+    throw new Error("Archive locked.");
+}
+
 localStorage.setItem("reviewedFile07", "true");
 </script>
 
