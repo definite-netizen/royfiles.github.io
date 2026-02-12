@@ -26,7 +26,6 @@
             font-size: 0.9em;
         }
 
-        /* Flicker animation */
         @keyframes flicker {
             0% { opacity: 1; }
             48% { opacity: 1; }
@@ -81,6 +80,11 @@
             FILE 04 – VIDEO RECOVERY LOG
         </a>
     </li>
+    <li style="margin-left: 45px;">
+        <a href="file-05.html" target="_blank">
+            FILE 05 – SITE CORRELATION REPORT
+        </a>
+    </li>
 </ul>
 
 <script>
@@ -92,13 +96,11 @@ if (localStorage.getItem("reviewedFile04") === "true") {
     accessed = true;
 }
 
-/* Change ACCESS LOGGED to ARCHIVE ACCESSED */
 const accessText = document.getElementById("access");
 if (accessed && accessText) {
     accessText.textContent = "ARCHIVE ACCESSED.";
 }
 
-/* Rare letter spacing distortion */
 setInterval(() => {
     const access = document.getElementById("access");
     if (access && Math.random() < intensity) {
@@ -109,7 +111,6 @@ setInterval(() => {
     }
 }, 4000);
 
-/* Timestamp mutation */
 setInterval(() => {
     const ts = document.getElementById("timestamp");
     if (ts && Math.random() < intensity) {
